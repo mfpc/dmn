@@ -1,0 +1,2293 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_3A745F67-9A7E-4023-81C7-EEEDD88C1275" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F92842D3-24E9-4A13-BB13-88F2F5D12BE8" name="purchase" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_3A745F67-9A7E-4023-81C7-EEEDD88C1275">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_310B565F-134E-413C-A3E3-8D37669C8EC4" name="SellerAccount" isCollection="false">
+    <dmn:itemComponent id="_FB3D96C5-8F38-47DE-B208-A76E7C718786" name="serviceRequired " isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_5413BE98-B187-471F-A9AE-E125B6C594CC" name="locked" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_1AE2E469-4EB8-49F4-A3D1-64E71BF819D3" name="buyLocked" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_22E79C93-AB43-43A0-BEC9-30BA09D1F96B" name="startDate" isCollection="false">
+      <dmn:typeRef>date</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_DB843D4F-5FB7-4A77-9F4A-C9A42E8CE3D5" name="inactive" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_AFD8091D-EE5B-4BC1-95E5-F354317D78C8" name="BuyerAccount" isCollection="false">
+    <dmn:itemComponent id="_0D9E9AAF-E19B-4C3F-B3FA-7CE031A0EC5B" name="availableLimit" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_5A53642A-2674-4225-A7B3-78CEE3863150" name="purchasedReceivables" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_7B1DF798-0748-4E62-8D87-A4F85779F1AB" name="delkredere" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_4A27C67E-AEE9-4212-A3B5-D6321C5916F6" name="purchaseLocked" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_4BFC97A2-B467-4B92-802E-790273B3A419" name="locked" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_6FCDD695-8EAF-4C40-BEAB-7BFFE3575A3A" name="KWG18Checked" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_458D8C1E-9394-475E-B314-B23FE0C1ED0C" name="country" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_213C6C15-41BD-4145-84D3-E12EE7AC62B5" name="legalClaims" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_CA9C9137-4534-447A-AC45-39C99760428E" name="dispute" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_4CB787C8-C666-41A2-A5CF-1FFCB7E3C3FE" name="Invoice" isCollection="false">
+    <dmn:itemComponent id="_01DED58F-ED30-4675-9B4E-292A60BC85A6" name="amount" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_0C1755D8-EB2F-4911-91AF-E6671253D2EF" name="state" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_A2FE4F96-A505-4536-BB2E-388D724B64F6" name="openAmount" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_A1C19183-5928-4243-B21E-179E3AC3FD9E" name="buyLocked" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_569C013E-2DCF-4646-BDC4-9351A7888F03" name="invDate" isCollection="false">
+      <dmn:typeRef>date</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_1AFD2E44-5169-416C-BE4B-0AFF6089893F" name="dueDate" isCollection="false">
+      <dmn:typeRef>date</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_0E9791D3-9634-420B-ABE8-CA3635237F57" name="InitialPurchaseResult" isCollection="false">
+    <dmn:itemComponent id="_79BC7EAD-0558-4046-8E0E-AB0EBC77F583" name="state" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_8F2545A5-60B6-401C-A2F6-9BCCDA8E4804" name="ruleId" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_03154F80-863F-4CED-BFBE-08ADD1E16ACC" name="comment" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_9C85DEBD-11DA-4CA2-ADA3-B5F2864FFB67" name="SellerBase" isCollection="false">
+    <dmn:itemComponent id="_9196DC71-6A77-400F-9E1A-150DD03F12E5" name="locked" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_C7A1A804-0108-4D4F-B4AD-CE97039D6C19" name="PurchaseRuleResult" isCollection="false">
+    <dmn:itemComponent id="_0137DDA4-E20C-423E-ADC8-BC304F7FD486" name="purchase" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_69F34177-7A7E-468B-9BC1-12E44FCB3A35" name="amount" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_226DC911-C6CC-46A5-BC48-4BE7A693196A" name="state" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_349922F6-B65C-46DF-BAEA-79E25EFC5C08" name="ruleId" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_09542B23-E45E-4C03-A3B4-DC2BA33A0CD4" name="comment" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:decision id="_04F9401E-EE0B-4649-92E9-28A50897572C" name="inititialPurchaseRule">
+    <dmn:description>Regeln, ob ein Ankauf generell m������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������glich ist</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:variable id="_898B131A-D1AE-4C20-BC3F-6CF8E8C54582" name="inititialPurchaseRule" typeRef="InitialPurchaseResult"/>
+    <dmn:informationRequirement id="_82C5019D-E708-4023-A6A0-7A7DEF526DFA">
+      <dmn:requiredInput href="#_14D5356A-7896-499A-974B-66B30840B1FF"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_8E12EDE0-53E8-49BE-94B4-E2F876D40AC6">
+      <dmn:requiredInput href="#_6B84ACA2-5542-43DA-B8DC-A386C90DB9E2"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_6587385C-6CF2-40D8-95AB-AF5B22F026F2">
+      <dmn:requiredInput href="#_237D9621-89F8-4569-879E-407B8EA52D35"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_83567FD9-B7AF-4820-A331-CD9462040930">
+      <dmn:requiredInput href="#_9BADA991-3209-4C04-AE0C-B96B97A66C74"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_8BBE65C0-15BE-4CEA-BE5B-6724C747463A" hitPolicy="FIRST" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_ED7DFFC8-F06E-46DA-AF5B-96CEF2CCC978">
+        <dmn:inputExpression id="_E5642E58-4981-48AE-A617-83FEC59A9933" typeRef="number">
+          <dmn:text>buyerAccount.availableLimit</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_94E62D2A-4C5E-4C47-929E-1A9A106F075C">
+        <dmn:inputExpression id="_002D9AB2-CC79-4976-91E8-6F5B5B51A844" typeRef="string">
+          <dmn:text>buyerAccount.country</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_8B946E76-A065-4D2E-870C-2BA39E21CDD2">
+        <dmn:inputExpression id="_9E7BAF2C-9E65-429A-AD37-CE3669B49640" typeRef="boolean">
+          <dmn:text>buyerAccount.delkredere</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_E40DD773-FAC3-4268-8B29-77260C5F2041">
+        <dmn:inputExpression id="_F4DF17B9-5EE2-4244-AC41-6E5A27D4B6B8" typeRef="boolean">
+          <dmn:text>buyerAccount.dispute</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_795185F7-E017-4464-8668-3D3EDF0710D5">
+        <dmn:inputExpression id="_E0E20A4B-15D0-4650-8772-5098F811F3F4" typeRef="boolean">
+          <dmn:text>buyerAccount.KWG18Checked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_0C4CE50B-32FE-4A53-BBA9-AFC79E1BC117">
+        <dmn:inputExpression id="_92E6BD6B-7A4D-45E2-A0A7-5F43B7E5D613" typeRef="boolean">
+          <dmn:text>buyerAccount.locked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_C13FDCC2-E6F8-4756-9E2C-C392A4E6271A">
+        <dmn:inputExpression id="_FD94AF3C-3F94-4100-A92A-EC16E5CB27AF" typeRef="boolean">
+          <dmn:text>buyerAccount.legalClaims</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_643FF817-CC02-4C66-82A0-C6B796702019">
+        <dmn:inputExpression id="_0C19B76C-A51C-448D-B6A5-5F14B002455D" typeRef="boolean">
+          <dmn:text>buyerAccount.purchaseLocked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_E7039DB3-76C4-42CE-B835-923F5028AA9F">
+        <dmn:inputExpression id="_D653055F-D462-4369-8DD4-EBB43028032F" typeRef="number">
+          <dmn:text>buyerAccount.purchasedReceivables</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_33E8A787-83A1-4338-A00B-1539A1241303">
+        <dmn:inputExpression id="_AB641E38-0C6A-4E0A-8D77-B215E4D87C09" typeRef="number">
+          <dmn:text>invoice.amount</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_F4B6E00B-85E9-429E-B78B-0134E6838D21">
+        <dmn:inputExpression id="_2778CDD9-97F4-44AA-BE92-C07D946C27A9" typeRef="boolean">
+          <dmn:text>invoice.buyLocked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_1341E735-DDDD-4F8D-99DF-9E2D1A1988BF">
+        <dmn:inputExpression id="_4D7BBBB4-F197-45CD-A4B9-72AEC4F76DDB" typeRef="date">
+          <dmn:text>invoice.dueDate</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_8DA4F2B0-539E-4178-AE51-73532A01D828">
+        <dmn:inputExpression id="_111FA6D2-9240-4D9D-801E-AC41EAF252F4" typeRef="date">
+          <dmn:text>invoice.invDate</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_159C1126-58EC-486C-8A04-3D33779B7D0E">
+        <dmn:inputExpression id="_C1B5058F-9AF3-47D9-A5FA-34DA98527072" typeRef="number">
+          <dmn:text>invoice.openAmount</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_982D7F8E-F23C-49D4-A570-8BA2C32A77EC">
+        <dmn:inputExpression id="_8ED2C0EB-013E-48A1-8821-73035EE26E1E" typeRef="boolean">
+          <dmn:text>sellerAccount.buyLocked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_9645DF9B-DAE0-42E7-9406-4F520F27CF4E">
+        <dmn:inputExpression id="_1C2AF213-0721-48EB-90C7-48571C09715F" typeRef="boolean">
+          <dmn:text>sellerAccount.inactive</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_C85BBE01-4796-4CA7-90AB-93112FE00C99">
+        <dmn:inputExpression id="_14E42DEF-4D52-41B7-8557-FDE71DB94116" typeRef="boolean">
+          <dmn:text>sellerAccount.locked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_00BBDA1A-5EF5-4BDA-8EE2-D9829A85D510">
+        <dmn:inputExpression id="_DB56FB1E-68DF-4E95-A275-18176E91C473" typeRef="number">
+          <dmn:text>sellerAccount.serviceRequired </dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_6A85D9CD-A0C2-43BF-8C61-CE2F0D15A0AE">
+        <dmn:inputExpression id="_3403D1A9-FF13-454B-9B43-035897D1DB5E" typeRef="date">
+          <dmn:text>sellerAccount.startDate</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_9CA4E1B6-BA7C-4369-A877-92D785D5E96B">
+        <dmn:inputExpression id="_16C80F9C-8FBD-49FA-B573-B3A029E58B6B" typeRef="Any">
+          <dmn:text>sellerBase.locked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_7F29BBB1-93FF-49E4-A315-A5D696A4BBB2" name="state" typeRef="string"/>
+      <dmn:output id="_40E7F25C-3004-441F-A692-8FB9E943306A" name="ruleId" typeRef="string"/>
+      <dmn:output id="_A61DA775-B148-4165-9033-5A3618FB5362" name="comment" typeRef="string"/>
+      <dmn:rule id="_48E4A12F-CA33-4B26-BA5C-A131557A374B">
+        <dmn:inputEntry id="_0DE4D5D7-21F7-4CB8-8669-11F958ADC495">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_10A9B526-5502-4F7D-A14E-A5AEAE3E1B16">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1139247A-AF5D-4C4D-8181-F4A7A666C1D7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3DBFFB93-3F51-4CD6-8717-EEA1D5049939">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4D0BD5CA-0F72-4CCC-A2B2-69B8C2C69AD2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A811E22B-7AEB-4F2B-A2E4-FC2095D939E5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_45497C90-F783-41C2-B677-33B03AAFCEB6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8D9AB1C9-4CFC-4856-8BE9-59F9AFA01043">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5D0D58D3-1C8B-4081-88B1-81D9CCBB1858">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_61456932-2791-4E30-BD1B-45BC556654E5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D47264E5-263E-447B-9659-939A0712BD3B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9D222B6A-7AD6-44EB-8296-F8B5F9473F91">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F91AF7B0-31F0-4B67-8561-340A47590558">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BC705104-6BB8-40F8-872E-CDF59AECD0C0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B2745ABD-D831-4E39-A34E-03F083DC7887">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5677DFE0-47FB-4A63-A048-A39F46DAA763">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3A818F7B-8290-4380-8AB5-9B42FF338173">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_043A9822-0401-4909-813E-61F2421D38C5">
+          <dmn:text>3</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1D2F4E58-57BD-477C-B211-951AD5CF2775">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_183166D7-B960-4370-B4D4-9618FDA5EDAD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_D6ABC5C7-7E7D-4363-8CD9-47CF3AAD7D1E">
+          <dmn:text>"D1"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_88403146-1CCD-4701-AEB8-E5DD7321C01E">
+          <dmn:text>"008"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_E260E4AD-CDF9-4BF8-B922-8685A07EDA38">
+          <dmn:text>"Factoringart Inkasso der Rechnung verhindert den Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_3C3B2A49-87C6-42BA-BC3B-854C1B861478">
+        <dmn:inputEntry id="_F8B30778-18F7-4AF0-A3F4-3FA7902E643B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3D8FF6AD-9088-4AC0-9145-8DC156C3DE14">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_35123A6D-CAD6-421D-8FA5-F03A4526D83C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_68987009-803D-4D00-899E-952EDFC0981C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FF5908D1-B444-4741-9511-567DE4714125">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8DCA7606-C3C2-4A81-912C-068B632B58DE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C41C2D8D-D6B8-4FB0-AE19-F55C560B3FF4">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_85C115CB-8013-4850-BEBE-4388E156A611">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2DC38F26-752F-4EF1-BA0F-19DE913921EE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_760581EB-745D-4A6C-8F0A-101381AEDCC9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B0FDB8AD-A5CD-4A54-A82D-5B86453D326B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2A06A422-7093-4FE4-8B56-AA55536473A7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_47DD63D3-1BFF-484B-BC8D-1F2D233E76D3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_71FA60D7-0A7D-4519-8F77-B80599C68956">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CBBD76FB-A4D1-40D6-8E24-20EA1AFB6BF1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DA972040-86F2-4E80-888E-3F25DD5F1008">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6FFEBE08-CDD2-4DF3-9ED2-9266448AA977">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B31C6909-A864-460D-8BCC-6DFE144B0441">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BBE33F32-7B27-418C-99DC-83531A8374E0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_225BF758-1489-4A69-B90B-73C9676D95B5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_43CC9837-2ECA-4047-B1DB-E97E69A5FB41">
+          <dmn:text>"D1"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_14279B71-AE18-41AC-BEA2-F1331FC8F623">
+          <dmn:text>"018"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_F70142B6-40FB-412E-A87B-733FC27A45C2">
+          <dmn:text>"Kennzeichen Rechtsverfolgung des Debitors verhindert den Ankau"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_C3187881-8980-46C2-8D4F-2DBBCAD5FD65">
+        <dmn:inputEntry id="_89C2BD9E-B2E4-4657-B325-BEFB4EEC109B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5A417CF9-16BB-4BF0-A9A5-4ACBEC9A0971">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5D9203C9-5474-44DF-8D67-ECA297AFB677">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4F15CA5B-7914-4DBD-9891-9927A2D817E1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AD2C1558-713C-4946-967F-397C9D04F094">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_39E06811-DF76-41DD-86D0-71CF3ACAA502">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D835AE6A-E7B1-4300-BABD-C8ACD32BC292">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ABC9EAA6-E07C-4DC5-907E-600DA7EBEDA7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2486A582-3047-4268-86FC-03823CC3B103">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6A3AA841-3882-4F50-9C26-9682613305B1">
+          <dmn:text>&lt; 500</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3D8F71D6-3DBC-4C12-87BB-80B4FBA6282A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0281D6B4-F320-446B-9AE3-1F9612C92CB2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BA0E29D5-94E1-4A90-8443-643EAFF6FEC2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6D273134-81C1-4AC0-9512-DB05A752FE3D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AE3041D8-6A40-471D-B97A-DAEE1E4066E6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4CA85614-BA4E-4411-9160-5963E6E417B8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D06ED77F-0BAB-4120-B967-A785E2C3EFA8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C52C9C49-3FC6-4B9F-88A0-1874BFDF79FA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_931682D1-38A4-4238-9B62-A688B077A24E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_870F4EE4-75D1-4ABA-BDD4-69A5FA65B502">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_BB82ECA7-3533-42F0-8BDB-2603854B2A21">
+          <dmn:text>"D1"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_FBA49243-6548-4A75-8C8C-EA310E25DB08">
+          <dmn:text>"020"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_21D85595-38BD-416D-869F-38A384094080">
+          <dmn:text>"Ankauf wird verhindert, weil Rechnungsbetrag den Mindestbetrag fuer Ankauf unterschreitet"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_891EB063-5F6F-4F04-BC1D-8035AC55F916">
+        <dmn:inputEntry id="_83D8FD62-9376-4DC8-96B0-E26624C86675">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2907818B-37D3-45D9-8FD0-D7BA33F4C520">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A802A3C7-D499-48F2-AFF2-AD2B7E547C63">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ECDEFD6A-1471-42D5-98A7-7E4F133B4E93">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_907065A0-2B9E-40FC-ACFD-522407A698B4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C2296923-8080-458F-A178-3B003F15C7F6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C4AC71D0-5FE1-447E-A9DF-EFA5EFBB51E2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D9CC6A2E-F472-4AAA-B2A2-652B40093979">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F6169362-F9A5-4F6C-984F-562A9623AF37">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AA3CD315-59BF-4706-9990-EF6688E277DC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3952D0CD-037D-4BCC-9432-4A5674836DBE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A99CD3D4-928A-43CA-B22C-E7DC9DB1282D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_41417CCC-377D-45E6-AAAD-224CFE608126">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_094DD448-51EA-4D69-BD52-0528CB5AD03C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E6319C2B-BA6B-4C82-97BC-25D239D89636">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_56263B07-25FA-420D-9A30-C8B5B1DD08FC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_870A79BB-F3A8-485D-BF11-00F6C9FFDD42">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E2387926-AC32-4AB2-BFC4-F9231F59B3E9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AA5C3035-B29F-4485-9666-A950972C0FAA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0E5A9BC9-F888-4843-8A05-118A3A688B8C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_99F34521-6A0F-42A1-AFCD-F2B4AB702828">
+          <dmn:text>"D1"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BEEF945E-30A8-4497-8EE5-30AD8698CF36">
+          <dmn:text>"034"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_CB4E10FC-3044-4BC6-B685-688C5E89091B">
+          <dmn:text>"Kennzeichen Delkrederefall der Rechnung verhindert den Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_9D22AB8A-D5ED-4E4E-B01A-53C8BB18DF41">
+        <dmn:inputEntry id="_0D5EC6E2-A9A9-42E1-96DB-6BF1733B8A55">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E7A0D483-795A-4DCB-9778-2E40890DE34F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CB04B670-37B7-4C71-8FDA-53312C2F2802">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D618AA6F-2DE0-4FBE-AE16-0627C5854697">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4BB94240-B652-4A69-8875-F786AE7ACD4C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8AE94045-DC5D-4655-88A2-CE92EC2ECE41">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_28D17A8B-A184-4CEA-8060-68A349D30E26">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9BA42872-61F6-44E2-8149-AF0C755CAD79">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_716647FB-A079-4393-BD26-37E774E6C4C3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AC71551A-8270-4C1A-96FC-9DFF819F326C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_51EBD5EC-DF94-46C3-80DD-25746468F413">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_096BE9B0-6E5F-49C9-8380-2A6C1391BF93">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FE83913B-D920-4144-A622-E2817C64D034">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7B55E298-60ED-48C0-9D80-C729E1F30050">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A236FAB9-D087-4A01-8F85-FB2E684C4694">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_516ED9AE-27BD-41BA-BB15-D27A6430DB9D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_73935A92-1E48-4216-809C-0D7795FF5E0F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D2CE9568-AFD0-401E-9115-8B8C6F5EDC7A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A1C0F7D7-195C-493B-AE23-CC1110E152F6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AC555357-23B8-4437-A364-1DB9A6FC7738">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_102EEA75-1E90-49D0-A196-726B153627D7">
+          <dmn:text>"D1"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_ACE0078F-E447-435F-B713-CB05EC09AD93">
+          <dmn:text>"036"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_B0311706-40DB-4429-A4B4-98FE65296D33">
+          <dmn:text>"Warenstreit der Rechnung verhindert den Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_04C85A0E-4FCE-4B19-9FFE-6996458E91CF">
+        <dmn:inputEntry id="_A9B2BA78-95A3-4A85-8927-10D4D6C22259">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6176D186-5ADD-4207-B39A-F567826813B0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BE5AD77D-104F-4B30-A317-E25372C78EC1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E7C296B8-ADE8-4FBC-B6C4-B48284421D73">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7C729A68-4C90-4485-BEB2-A9518703A476">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2D2CAA29-6CCA-4D69-95E9-D0954C425BB6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B0D63CB9-D171-490A-8B73-835C6A69C5A3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A64842C4-A0DD-46E0-959E-334FF971FFD6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EF71D3FD-0677-4ACF-A6CC-FDFD71E71FFA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FA64CB62-59A0-4DC2-A854-5BD9214F625F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D5C299B3-8C15-4351-A34A-E1FCA8852EFE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4952983D-1B81-4043-B624-63DD68988092">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2D545E33-4ECC-4FD4-823B-BFD69953EE33">
+          <dmn:text>&lt;sellerAccount.startDate</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_33E3238D-35A2-4600-9833-AB96609FE2B6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0D946F4D-95D4-4A24-9C75-5EE4014607C7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_27318060-3B99-47DE-9E28-10699EF94969">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_09ACF58C-666C-44FD-8CA6-6AF163EB169A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_14C0CC30-040F-4A89-92FD-BDD5C5B8AF4F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C30A8A2C-F2E3-4F97-A4B9-7DC058061F4F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1311FEA3-4946-4118-8295-63D6411ECD60">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_0FE139DB-5C56-46E5-A95A-88C47731831A">
+          <dmn:text>"D1"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_88EA80AA-0ED5-415E-832E-7549F611535B">
+          <dmn:text>"040"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_6BA700F2-88F3-416F-895A-4E464D3E1E5E">
+          <dmn:text>"Rechnungsdatum kleiner Vertragsbeginn des Kundenvertrages verhindert den Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_DA1DC016-6AE2-4BFC-BACE-50216F43BDA3">
+        <dmn:inputEntry id="_D7ADE32C-9E89-4355-889D-647B13ACFAC5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F9FD5BD0-AB44-4DB2-8FB9-C371E8F29220">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8CEE9E6B-5492-48B6-B6FE-D9CCBE0348A1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0118BE5B-EEA3-4DED-9ECA-660D30E7E93C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C147522F-B710-45D7-B2CD-53C523A38A9F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C7F3F909-B5BF-4172-91E0-B8809B749F02">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DC2EA35F-A830-44A2-B4A2-2DA02B043019">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9736FC4D-BECD-4519-B7E0-5CE65C289A46">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6C325A92-A0EB-45EE-BB36-FE46F279A3B8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DAF3AC4D-6F3C-4E95-B4D3-274298249730">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_16B32FED-1187-4616-94E9-F8787DC61366">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_14EB6DED-63A4-4E59-8E8B-DFC460E92DB2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D4FF57CF-CD97-40E9-951E-239A7FED9BAE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_375B27E2-A291-4679-9468-0B9DD8C4FB2E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6FAAA06B-23E5-4C9F-89D1-E7BD4D229E93">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8BA39ABA-E69F-43F0-85FD-162A7146E39F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2414DFA8-8F5D-45E5-8BBB-2B372683BA25">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_36FE0806-A9C5-4DB4-8691-953DB93157D7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_82283E41-E4BF-4E27-AE87-95EF0C7F6ACE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1DED1E93-177B-4C39-ACF0-0445D9F16022">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_BF194766-2623-456B-8143-252442B5AA47">
+          <dmn:text>"D1"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_ECA1498A-02D6-4DA9-985A-1BA6199B1BB7">
+          <dmn:text>"042"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_58E32E18-E704-4B82-A584-3A3D03DBF4CB">
+          <dmn:text>"Ankaufsdatum nach Ablaufdatum des Kundenvertrages verhindert den Ankauf "</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_E058439C-2A9F-4DA6-9CD3-C9026DD02E65">
+        <dmn:inputEntry id="_4E7876CD-2817-45A3-B395-21C0EF626E63">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BA9F35B6-0BAC-42C2-B051-F754633EF4CE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_32994027-A20B-4058-8E2E-B4BA3A7AADC6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_146A6E5B-2BEF-42F8-A495-852540162033">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4D4BB74B-91A4-4414-BCB9-1C7200CEDF23">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E6B0B547-5CCF-407B-9A5C-19E8E42470E4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8037F5F5-EA33-4B17-910B-842AE6E60FE2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1357D837-BF05-46DF-A354-7784D8C95B52">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_62D3A811-82AD-4F10-8686-787A76791128">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_96286DC6-34CB-42C5-B525-8E6DF22DB9E2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6E202AF5-D51C-40AF-BA40-D52A027D19D9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_272144B3-B3F3-4B6B-B42E-E63219704F17">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E3FE9A85-FC60-4901-A8D1-60B73DAF6FA5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AF92DB7F-0120-4AB3-B500-2E156AD06927">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4FE79449-9893-4C52-8D23-21F8BB77C6BC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0A48C1B5-C797-470D-A1F8-F8B7B9C7CB1D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7D0DC955-7B80-4F5C-BEB4-11E93C7A02E9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_94D3A8C5-AE25-4648-8461-BD96FBF6D2E4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F3303201-810D-4993-A579-52EBBBEF9996">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_96FC7EE4-9E0D-4246-893A-93DE87218B84">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_07752A75-AC04-41E4-8FD1-E3361EE18FB1">
+          <dmn:text>"D"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_C480188A-9DAB-44E2-864D-D8C990603F03">
+          <dmn:text>"000"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_87FDD074-BC22-4F34-BE7F-D2C093D461D3">
+          <dmn:text>"Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_9BADA991-3209-4C04-AE0C-B96B97A66C74" name="invoice">
+    <dmn:extensionElements/>
+    <dmn:variable id="_902EE60B-AEF2-4A26-A48C-B75B3CB1E1AE" name="invoice" typeRef="Invoice"/>
+  </dmn:inputData>
+  <dmn:inputData id="_6B84ACA2-5542-43DA-B8DC-A386C90DB9E2" name="sellerAccount">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D7E73973-3427-4E21-9C13-C91D3422F29C" name="sellerAccount" typeRef="SellerAccount"/>
+  </dmn:inputData>
+  <dmn:decision id="_56A44723-D93B-4102-8895-2BC8EDBD1240" name="purchaseRule">
+    <dmn:description>Regeln f������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������rr den Ankauf</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:variable id="_0B1D2522-6C8C-4D39-9FD5-19CF49CC2015" name="purchaseRule" typeRef="PurchaseRuleResult"/>
+    <dmn:informationRequirement id="_6FB9F286-369F-4AEC-9C83-8F4EE10F49BF">
+      <dmn:requiredInput href="#_14D5356A-7896-499A-974B-66B30840B1FF"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_FD0CE0CC-C0DA-452D-8B66-811D26FB017C">
+      <dmn:requiredInput href="#_6B84ACA2-5542-43DA-B8DC-A386C90DB9E2"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_BE9C2866-BA08-40E1-97AA-DB0160DD3EE9">
+      <dmn:requiredInput href="#_237D9621-89F8-4569-879E-407B8EA52D35"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_1F67992D-0EC6-4D80-B5BE-4DFD0944E724">
+      <dmn:requiredInput href="#_9BADA991-3209-4C04-AE0C-B96B97A66C74"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_3AACB3E8-EFC9-4011-B699-E34CB7CFF5C0" hitPolicy="FIRST" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_1267BC9F-9DF6-4F15-8EEB-D476805C96D8">
+        <dmn:inputExpression id="_8DBACEFB-1766-4BF9-90A9-4DD9B8F78E86" typeRef="boolean">
+          <dmn:text>buyerAccount.KWG18Checked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_2D3C74EF-0722-42F8-95ED-59016EC47321">
+        <dmn:inputExpression id="_98344BEE-571C-4929-8BCC-5CF1D14CF24E" typeRef="number">
+          <dmn:text>buyerAccount.availableLimit</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_B6CFD083-79EC-4138-A270-6F5C79E3A254">
+        <dmn:inputExpression id="_3BE9B734-64D8-4CEE-9F93-60540F36996A" typeRef="string">
+          <dmn:text>buyerAccount.country</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_447FB3C7-AD1F-4B4E-B8AB-F4B368149F00">
+        <dmn:inputExpression id="_9C313164-B194-4C3E-BD9F-112007B817CA" typeRef="boolean">
+          <dmn:text>buyerAccount.delkredere</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_5E33C858-52F4-4E18-AE32-DD8C2012F96F">
+        <dmn:inputExpression id="_5B83F458-E22D-445C-BFB5-48072CC606B7" typeRef="boolean">
+          <dmn:text>buyerAccount.dispute</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_2BAA30A4-0EE8-459D-B4EA-CA0A72D5F0DC">
+        <dmn:inputExpression id="_2BA36C9B-D60C-4F28-9EFF-28D14BD0A12D" typeRef="boolean">
+          <dmn:text>buyerAccount.legalClaims</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_B5475B12-896D-4A05-9902-52FE941D53DD">
+        <dmn:inputExpression id="_2CA45DD6-2A53-460F-87A9-875154938CC3" typeRef="boolean">
+          <dmn:text>buyerAccount.locked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_8BEBA3D1-3EB4-4BAF-86F2-769032B11F98">
+        <dmn:inputExpression id="_6E55527F-5FCB-4B5D-9431-3D65550FC99C" typeRef="boolean">
+          <dmn:text>buyerAccount.purchaseLocked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_5C4B0340-92A1-486A-93E8-9624E3064F9F">
+        <dmn:inputExpression id="_5CCA248D-8DBB-4EF9-82B4-2E3A585DC4D2" typeRef="number">
+          <dmn:text>buyerAccount.purchasedReceivables</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_CE1B1CB9-D654-4B54-A49F-D5EAE8E34937">
+        <dmn:inputExpression id="_DC0ABCCA-A5B5-4BBD-8076-26F25BD30AF0" typeRef="string">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_117ECC5D-12D2-4BF1-88C9-CE355D1121BD">
+        <dmn:inputExpression id="_2A8F1CBA-B993-41F6-B14A-301EEAF627E2" typeRef="number">
+          <dmn:text>invoice.amount</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_2340A2E5-CB0B-40FF-BB1D-255C3F4E46BB">
+        <dmn:inputExpression id="_B2355537-D7AA-4B48-A984-E33B923A10E5" typeRef="boolean">
+          <dmn:text>invoice.buyLocked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_B02BA624-804E-4B8F-8A68-D07A0E69F7E7">
+        <dmn:inputExpression id="_88EFAAB8-BA96-4212-B343-538215810A94" typeRef="date">
+          <dmn:text>invoice.dueDate</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_D9FE3758-32CD-41AE-BFB8-EDB4C41705D2">
+        <dmn:inputExpression id="_2CF679A0-2344-4F8E-B730-0BAA8D64E800" typeRef="date">
+          <dmn:text>invoice.invDate</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_FB2C11A3-E52F-4F71-A568-5BE443F6A8A4">
+        <dmn:inputExpression id="_7E00393B-7D34-455B-BBB4-A50C0AC02258" typeRef="number">
+          <dmn:text>invoice.openAmount</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_E0C45ACE-64B2-4E2F-BF8E-E9B02C881753">
+        <dmn:inputExpression id="_738C6C71-16BD-4106-8A3F-2D6C2EE11C69" typeRef="boolean">
+          <dmn:text>sellerAccount.buyLocked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_3523B7BF-165D-4FC3-A62C-1A15784D1CB4">
+        <dmn:inputExpression id="_98AF6528-0F72-4DD3-AFF8-42122A3C0C15" typeRef="boolean">
+          <dmn:text>sellerAccount.inactive</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_ADE01789-1ED1-4047-846F-0B5A70B2E410">
+        <dmn:inputExpression id="_C858382C-D56B-4A3A-93F7-DB8318A59202" typeRef="boolean">
+          <dmn:text>sellerAccount.locked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_5284988B-ED2A-4BA3-AA67-D026AC4549B0">
+        <dmn:inputExpression id="_D2DF4C95-6CC4-42F1-8057-63B97F91F2CB" typeRef="number">
+          <dmn:text>sellerAccount.serviceRequired </dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_3256CAFF-6530-47FA-9ED1-C932831ED0FA">
+        <dmn:inputExpression id="_98BA4148-72DF-4FB2-A1E6-5384D333132A" typeRef="date">
+          <dmn:text>sellerAccount.startDate</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_9FE79E93-055A-4EA4-84AB-6460104539FA">
+        <dmn:inputExpression id="_21A7F842-7D7F-43BD-9AF2-458ABEAEFA1A" typeRef="boolean">
+          <dmn:text>sellerBase.locked</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_9FDE776B-E88B-4BA9-9E1D-B9082DAF799F" name="purchase" typeRef="boolean"/>
+      <dmn:output id="_A23DD639-C15B-4B1A-B8E3-5D00D166B0F4" name="amount" typeRef="number"/>
+      <dmn:output id="_62C94DCC-D207-4856-9CA4-9B10B362E5A0" name="state" typeRef="string"/>
+      <dmn:output id="_D087A766-8A45-4EA8-904E-5E4B871736A7" name="ruleId" typeRef="string"/>
+      <dmn:output id="_E336160E-6969-47C8-A84F-B52BF6FE5C4D" name="comment" typeRef="string"/>
+      <dmn:rule id="_A7BEFC0A-9457-4A0D-B27F-57BF7CA6415E">
+        <dmn:inputEntry id="_102B04A1-EFD7-484D-A1A3-1D2E484E1A54">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_453218DE-EEC7-4CE6-B550-0EB59412E96C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F1E46A14-A113-4A81-A02A-C8C99F028F7C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CD0D0463-D150-4CA2-A6D1-A94FCB8414DB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C61A6265-95C9-4FC3-A7E0-0B33AADD4356">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EF12F70C-1211-41FD-9557-70D1BF611E21">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7CCD3533-4B1D-46B8-819F-3C848C392DFC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_92555178-D808-4AE7-8E5C-2668BFF5B3C6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E68839DD-3F96-4E1A-B32D-8CD3D9CF8FD4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_36992360-5833-407B-8C34-09CB4C057431">
+          <dmn:text>"D1"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_618F5020-9CDA-4527-8E35-1F0ABE717F97">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B3DEED19-CE04-44F0-B03A-9015A86C8B19">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_78975F1F-2E7B-48B9-8034-F0DE94F91186">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FCF81F5B-3F71-4E74-BDAF-EA12F28855ED">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_366ECC6D-85FC-4A51-9139-AE632356E24C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D7A43157-91F4-41C2-B667-C55849BADBD2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D623B533-D86D-49DD-BA6A-58430370BFF6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9822D7D9-1689-4998-B13B-626F9E4107B6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4AA6656C-0C40-45BC-AEB0-0166FEBC7DF5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_67EF4A74-0EDE-4746-9A5D-FF7B20151715">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BEC9EA2B-4543-4284-A651-51D12FD1A55F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E926EB8F-D38A-407A-B4EB-4ADF3C0804B3">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_10B3DECE-8C9C-414F-98C5-6AA5A0A33E7E">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_40E81E2C-F1E3-4AB6-A7DF-DDBB1E520A3F">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BA69A20C-DDA3-44E1-AEC1-27EB6FF9C8A6">
+          <dmn:text>"000"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BE3A08B3-A29D-44F7-A603-1C156B27C50F">
+          <dmn:text>"D1 Status nicht f������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������r Ankauf zugelassen"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_157EB1A8-429C-441F-8AF1-0C76F4574EA8">
+        <dmn:inputEntry id="_A0E5A341-1522-4697-8DAB-8359FDC07CF1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_586B5FED-EE44-4E34-B9E2-14C9893C7A6D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7CA06B14-DDA6-4D44-A125-B7151CFDA673">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_71B44E83-B3E7-40DF-935B-F15F03876338">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9BDAA0F5-E1C5-4036-9F0A-D36CB5553D63">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5D83DAB7-D904-46C7-9E2B-DDCCCA69488E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E781468E-0FA9-48E9-91AA-99429D16DE3F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_56D43336-72A6-450C-B454-3016CF91638A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A158DDB8-EC17-40A2-BB17-E2304EBDC0D2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6096F202-C7D0-45D1-B9D7-297F1E5AC29E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DEA1062A-F3FD-444C-8052-2D6FCF45ADDE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F9C5E61D-1826-4875-B3C9-A30FF7E81FF1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EFFCE2B9-F641-4CA9-97AA-E753014547B4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F07E3F80-094B-4065-8575-B70F12344CF0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E7B0FDBA-657B-4F2A-986D-92ACA48B29A0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_064AD932-7E9E-4879-98E3-F88EF6C1CCEA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_06A38A93-50AA-415E-A310-535997917A47">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CD67130E-B0CB-4BEC-929E-B1CDE43BF720">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_10241814-2EFE-49FF-8BEA-62A866FFBCC1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_646FF6BB-010A-4A49-A281-20284107C43F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D41BA404-C098-4315-83C2-195E19EF6655">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_5F9E432F-81F9-449F-B009-038BECEF5444">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_9064CD05-989C-4F41-83BD-4FE4E147F9F4">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_6D2F3D1C-3A26-44F3-AE98-0AA370F5E8E9">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_716A90B9-F66C-4F83-83FD-4E6951844FB5">
+          <dmn:text>"004"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_7C2F9585-2EF7-4B9D-BC81-A368B6FE0A50">
+          <dmn:text>"Sperre des Kunden verhindert den Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_3B2E2C7B-1511-4BFD-AD79-9F20DD125C31">
+        <dmn:inputEntry id="_C46A7E5B-7940-445E-9BC3-A8AC9B899729">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5CFEE17B-064C-4326-80DF-67826CEC11C9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BA170748-22C2-4B1C-9B46-B678B5A69D76">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C0160E23-98A6-4FFB-961A-E99B9B3019F2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_34C2E28E-94E9-4601-9A68-D7EA25D6D22B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EA45230E-03A1-4046-8180-DA0C6744C41E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_39201022-824B-427C-9665-A7E0D869D94C">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1CF93FD6-CFA3-4AA7-8CB1-C06D21F4ABE6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B21F08A0-2A10-470E-9980-3C8530DA756F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0D5BC8A3-8B65-46B4-83BD-EEBC275CE967">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3324B3C6-0E48-4035-B122-3A60E8411D94">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0E9F9DC6-6CCE-4712-AA82-F6BDCB0B2A55">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_48E96C09-776D-400F-814C-D9351E91179B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_154600A6-4C46-4D62-A736-1CBA9BDF6ED7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5764807D-A6E5-4079-8ECC-68584C53337A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_819A0FC7-7746-4EB0-9934-C71909E4D15F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DF788A42-40D6-410B-A6B5-443F5D6BAD26">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_94B2BDBC-DFD5-4B45-97C3-2E9B19C670D4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_32DBFDBA-0D84-4202-B599-4962CCE16452">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AEFAC847-192D-4BC3-859C-47138E491A4C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4622E881-9422-468A-8EC7-569DD540CAC9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_B92716A1-F417-405E-8A24-2DCB3C49A81A">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_47A9D77C-D40A-413E-A3E4-AEC24B78D6DF">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_292BB52B-BD76-4837-83AF-DB02B06CB585">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_7FEA7458-DC5E-4713-8F09-9838D68EF44A">
+          <dmn:text>"006"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_EABE2AD0-A75C-42DB-8914-8FDBB38E715B">
+          <dmn:text>"Sperre des Debitors verhindert den Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_E7251DBD-DDF4-47EE-B3C5-DC38EBEA4D25">
+        <dmn:inputEntry id="_CCE4A9C7-EC19-4176-99D8-EA2C8909FD94">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_69307334-28BE-4A00-B7A5-4F27D52DA68E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F6F2EE57-BE9A-4FA7-8303-2F231F8B628D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9B47A4C3-AB00-4731-A553-05C155D9F6F0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_27E04081-0A9A-4D0A-9A94-CCDB1CEC10FF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EE993213-36D0-4987-988B-AE916A3CCFEA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C70FA4FC-566C-4371-A4F6-70D0802F4798">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1030B058-E1A6-4382-BD79-551EF49D4481">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_50B45542-26AB-4221-9DF3-24748EE15E0E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_08F83B90-0B3D-4446-B003-E926B36FE26A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_81813908-998C-4D26-9769-9F0598CB1751">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C87DC81B-B53F-436B-A7DC-551442C45441">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_10D5DD63-BD91-4E10-8857-3EAFBA74DBC0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ED9085C5-9FBC-41C6-91DD-B60782DA60A4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D18B10FD-9FB9-4C23-AB68-E7E129F4E7CA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F45E4B64-F14B-4D70-B0DA-B49943DE2862">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2BC1B900-2751-423D-A156-F264E9E41825">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5A4E9160-559C-4807-A664-B72950AB5453">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_054F8CE0-B7FC-44EE-AF35-8ABC732A5850">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FBE10518-E457-45BA-895C-6D814225F0C0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9ED0310F-7AD7-4C06-9589-6AFC41B904DB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_39B32221-F088-4D1E-BFC0-81F93A748A10">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_8327EE28-47B6-4D89-8608-DB1F401069FA">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_4BC8BC67-4421-4E61-942E-9F6247E405BE">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_594AEC9B-B2C0-42FE-A35B-BDB634143071">
+          <dmn:text>"007"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_019C9419-84C7-4901-984C-08A4B9863C95">
+          <dmn:text>"Ankaufssperre des Debitors verhindert den Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_00A5883E-6E04-47D6-92DB-31F9FDC3C8E8">
+        <dmn:inputEntry id="_45C4BBD0-15A8-413A-B2ED-D55126AF0B89">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9C46C1A5-5A05-48E9-8984-183AF1F92DEE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B5ABAA65-6CA0-4F4C-BF85-AD17B71F85C6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A55FAA6F-51FD-47F9-AC8D-C36CEFFB2FF4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1870050D-D2DD-42D8-8F5A-C12A8C6E6847">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7D453580-1D32-41DA-A58E-D5D5385D5E81">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_463A803A-B102-4847-88CE-D4227F5A4D3B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BED6A050-ED16-43F7-88F1-1E6EC7CFA6A7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7B22D48C-41B0-4EBB-8B28-859FB3E70CBC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6B32EDFC-1C4E-4FC1-AE4C-B447C37FDF1B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C6F35949-B084-4DCB-B9A8-26FCC2426A20">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_00B9A9DF-B9B3-4365-8B1D-3C87264F5239">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A87879E5-11CD-4FAE-8361-EE6418EA7F36">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_099A5991-90F6-4E02-A2A1-2176DE042A93">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1F2AE979-42D2-44F2-9927-0B7BB0340D6F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_79BD3A7C-B600-4245-AD08-34F0FAF3BBD4">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AAD59C8C-A0ED-48C7-8DD2-E6DFE09D3267">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D130ED82-415E-4F1C-8C02-D1C7F2420BE8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_72DE3FBB-4118-4993-AA4F-20F65C51AB09">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_90F6D36F-A9CD-447F-A6F2-009BD633EB0F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_72EF9F8D-81A6-4AB3-98A1-8962ED408CEF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_C67AD639-9E51-414B-BB50-1A936C021469">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_1D39783A-19E9-43D8-883D-4251DAAA38A8">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_84882D56-9A7C-4615-8865-6D45E3D4CFBC">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BAC586F1-1A60-40D0-9D49-A72F14660A6C">
+          <dmn:text>"009"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_A6923B7B-9113-4F42-891C-5C35530A1D3A">
+          <dmn:text>"Ankaufssperre des Kunden verhindert den Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_6C6A054C-FEF9-463B-A5D1-72D11D31717F">
+        <dmn:inputEntry id="_67DDF30D-78D7-4CD8-B70C-77384A01C014">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DE25457F-A715-451E-8395-7D1D4A05F449">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DF9F9552-5ED4-4F09-8ED2-60403E5C967C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D2D26712-3CB2-4645-822C-0D20A0C8A193">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C813B6E9-3C0D-44D5-A4BB-DFDA90C1C1EF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_45C9ECED-EAEF-42A4-9C03-5CED28EACFBB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F62822C0-852E-43E3-831E-A5FEE72488F6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_327C6077-35C3-4EF0-A977-229376358E65">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C290739B-B7AA-4E8E-A9BD-86728F6DF251">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0524BAA3-B07F-4AAF-9916-424C48A75A27">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_43196B59-A954-4955-9CB9-9E26A13FA55A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7195F314-C560-4F38-87F3-CC2816BB0571">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E894173A-F2A6-4908-BAE7-8E3D7173C245">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6DA65AA0-0E48-4982-ABB2-56EED44B1B9C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A8CC4E33-436A-44D5-9071-4146BC0B9C3A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_71484002-10F9-4E2F-B838-798004085FEB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_41F32888-55CB-4444-A54B-C25A1668DB77">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BC3B87B4-EF53-49A1-9F2D-309F792E9EB9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_33A6BF15-137E-4009-8FF3-B4C63DD64153">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E44671BE-6E2D-4CD0-83DE-55F8D02EE751">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C97D97BF-BB21-4224-AA55-4E7D7393AB9C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_7D49DDD1-D112-4625-BCFD-392DE0BB1240">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_000B586C-79F4-49F6-81A0-5E8957EE56E2">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BE3A9B66-D1B5-43AE-AB89-47D41903996E">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_8BC89633-2F9D-4D8E-BFF8-7803DCD1773F">
+          <dmn:text>"010"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_D6D80871-A610-4D84-8E00-7F885BF3163E">
+          <dmn:text>"Ankaufssperre der Rechnung verhindert den Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_1AF9C350-A058-47D9-A3F4-9B6A28B3B39B">
+        <dmn:inputEntry id="_A53EB35D-5A31-4F8B-AE82-93572A618D28">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_44A47293-DE4B-4184-8DF9-EFFD1B96E311">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ECD2578A-C112-4140-AC8E-D58AD04F5483">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F5BC504A-D804-4252-9B33-FC0EB22252F8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D7323F9E-530B-453F-AAC2-5BFF54B73F3D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_193E5FFD-A3DD-4888-9E3B-7047FA94E298">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0ED6ECE1-4B35-47BA-BBC3-0FF67FBA4B62">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2D14B222-9071-4BE5-8F6A-F1F62EB564BD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2E0C9740-82D6-4118-B13A-850E421EA023">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E9C52AC0-1F6B-41C2-8CCC-5BAEF678534F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_008EB5AF-D981-46AE-A4A5-CEBC0806485C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CC7563CB-681F-44CC-9F49-F0995419F228">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_67EB0717-79E4-4EFA-9FA3-75DC7D61B650">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3459B3DC-DBC3-48DF-A978-3125C3D057FA">
+          <dmn:text>&gt; today()</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_10FA3A73-9D7E-494D-BE97-D7A9F040FC31">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_16910412-C0FC-4BE5-8BEA-0507D5687F3A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AE9D6A45-DBE5-43C1-8A1D-415B1F27F936">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B362D750-20D7-4535-840E-3EADCD14702D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D5C16D90-CB91-4B64-9ACA-4663D2C048A4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_95E089A5-B59B-443D-BA6D-F93700CDE811">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_29C8EB1F-8CC8-4C71-B291-62B5104130F8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_2913540B-F371-4E85-927E-7DF1A375A58A">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_8D636C32-F101-4D90-8C67-F51E53B53934">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_FD1EC108-C86A-4783-AC8D-2C7BC15798D1">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_CEC19627-D58F-4F93-B64A-5399ED1E49EE">
+          <dmn:text>"012"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_130A6673-FC03-4888-94D8-1355AA6EBEC8">
+          <dmn:text>"Rechnungsdatum in der Zukunft verhindert den Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_3AEEB24E-3482-4E57-87C5-147CAC0CDEAD">
+        <dmn:inputEntry id="_73C00D2E-04C3-481C-B711-B13D360A3B89">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3FD14E06-B1E9-48AC-BC7D-C576DBAEE513">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E4A2D733-3C76-4A50-90FA-98FF4E93DCD5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7144D260-1954-4B92-8CDC-EBF0D447FC6A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ADD292B5-598E-4764-89A1-14BBD6D556B2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_757B8791-2CD2-4B88-B256-878F50B1AF2B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_74B18CAF-C859-4B36-A99D-21ED54B3E7BD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_395B6767-F477-45B5-8AA1-BFEF06F0DF07">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_23E0C5A4-543F-4994-8AB1-BBB7C98C56D0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B15FCF6A-DB7A-48E1-B426-CD61C9B65CEB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C87DEEF9-A407-4A8D-94F7-5A116BEBB2DB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F5F30C98-980C-4A80-B102-6BBB204709E1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7B948701-7E83-4787-B817-2DE772E0A39E">
+          <dmn:text>&lt; invoice.invDate +7</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FF1B4A50-FECF-4BC1-9CDC-3D8FEB962802">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_98A12B8A-C79C-4A21-A34F-E03E27F6F50A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_53A21D48-5979-417E-A899-4533FAD611A8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C62D4C43-07B9-4757-8D3F-6FF449ACFB9B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C93DCA72-6F03-48F5-8075-19964F8DC8F7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2222F302-FF03-41E4-85CF-890F3F90F6F0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_161E2FF0-07FF-436A-B3DE-76F8AF89EC77">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0A9E9BDB-3274-45F8-9E59-DC8E541D6C2D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E3128DC3-57C1-4672-B584-11ABBDEEBE0D">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_E01BECD5-7FD8-4723-BEB4-045B0EC4803E">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_B1C34977-E6E3-490B-B957-D61547BCDA2F">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_775F857F-59DE-45C2-9CB4-5FA070B25FE7">
+          <dmn:text>"023"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BD1DCB08-0551-46B8-90A6-E866F9C62BA7">
+          <dmn:text>"Ankauf wird verhindert, weil Zeitspanne zwischen Rechnungsdatum und F������������������lligkeit zu klein ist"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_1377351A-2DCC-4C42-A9FA-7A4D296B785B">
+        <dmn:inputEntry id="_A64587D0-7C7A-4673-9C4B-12A39F96FF7E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B58DF580-8EA7-41E0-9D87-13694CAE8C58">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_15945BB6-BFC1-438C-8417-CD31275EFC61">
+          <dmn:text>not("DE")</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D1F810EF-E538-41A1-9130-C05107C3D692">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_53C1150B-87F6-4047-AE73-6F8128513970">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_465F7E4B-80FA-493C-8231-32F462F4284A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3D870F27-0895-4025-A069-62689D6F2A51">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6E431069-F4EC-4338-9468-2712EB860039">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FD270550-9B73-4638-BF29-719945B3054F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_61D583C8-6D9D-4E13-B733-ACD716F79881">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_84FCF75C-D225-4969-B526-3FD20330D654">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_792D9662-F190-4DFA-A1ED-D688172EEAF6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_51047E7B-595E-4991-A794-AAED7F41EBBE">
+          <dmn:text>&gt; invoice.invDate +90</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DA804104-CFC5-487D-A117-579C96F0BDCE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_41C3BB0D-9110-400F-A80E-DA28DEF6F43E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_237ED7BB-90F0-4017-9393-0C88D4A5840E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B8BF5619-1B19-4802-9246-E0469F5B01E1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3CA9D8F7-CD3D-4DEF-B8E7-109BFA3BE7D8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2E7358A4-6AA7-4B81-B765-097712C3D9F3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6AD79884-9207-4DB0-98C2-4740321CED2B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4B863AA6-4290-462C-AACC-96EA34D61068">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F170D1DF-5E7E-499A-B713-A26F78F5AA4A">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_A6CD7CE4-7ACE-4853-864D-AEB7D8A028D4">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_F5D36514-CEC9-427A-892D-E06DBF42A1D3">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_04EB24F4-8589-49A3-8FFE-88530DB2BF33">
+          <dmn:text>"025"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_E8CB612B-BFF8-4AE3-87C4-406DF9A3932F">
+          <dmn:text>"Ankauf wird verhindert f��r Auslandsdebitoren, weil Zeitspanne zwischen Rechnungsdatum und F��lligkeit zu gro�� ist"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_6261ADB8-EB1D-42F7-A489-B6D291B59308">
+        <dmn:inputEntry id="_FD961420-F910-4B60-B67B-EFAF28D81E63">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_834894DA-EC87-43B7-8D10-B6D1F4EFD77A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7ED94E39-710F-4C48-888D-5BB1AF27AE13">
+          <dmn:text>"DE"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4DAFE8A3-C366-4F0D-AC05-A421C4587835">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FE1E7E01-361E-40EE-97AF-CDA2E575F079">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F8DCDBD6-3F04-4073-9087-973CBFD99134">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0CE7E078-C63E-4813-8391-653BE9A53F3B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BCD71E0C-080C-4F19-9131-CBBE397FAA31">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4125F8CF-320E-4B34-8633-FABE4005FB5A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4DDBAB73-DB79-4E76-B018-135AED4EDA47">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CD7BE0C3-E2BD-4E07-8A8B-A6B9DF391840">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_87AAE43A-5434-4731-8E5B-058BEB695C30">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_888BD717-39F9-4A1E-AD6F-491823C1D014">
+          <dmn:text>&gt; invoice.invDate +90</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D8A9DA56-D590-4FC1-915E-D84C84C0BAB0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B4E4C393-CB86-4239-BF68-8F0C0C942A0B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C7D6D4DF-BB60-4B0C-ACEC-1D3088555026">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F480FA0D-D73C-4BD5-899B-C41FC6D862CB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E8330427-DCA8-43E4-B6DC-D312A348127B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_50570B01-4E62-4690-846F-F52782054A12">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5B7DDB6C-6D7E-4232-8CC0-2CD671F9136F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FCC74B93-9958-4F0B-9080-D8C0858C9A86">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A492EE72-48B7-41A4-890F-254FBF34FA39">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_60975BFE-B07D-461C-9BBB-5971ECF3596C">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_7F06244D-DA61-41D7-B7CA-5A4A7BCA0E78">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_22160F19-6A10-4AF5-8388-950CE55E9910">
+          <dmn:text>"027"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_E18F4558-4F0E-43AD-81F3-FD0C7CAC6007">
+          <dmn:text>"Ankauf wird verhindert f��r Inlandsdebitoren, weil Zeitspanne zwischen Rechnungsdatum und F��lligkeit zu gro�� ist"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_BA1C878B-B8B7-41BD-9726-BA665F94F4A5">
+        <dmn:inputEntry id="_4F350606-2CE7-49DC-9C6B-D733E9A64BCA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C81A5DE7-E00A-4C1F-BFFD-90659AB88E72">
+          <dmn:text>&lt;= 0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FFB3ABD7-943E-4F7F-BD07-98A57E028FDA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F9793FEA-8E55-41D9-AC64-BF7879A82368">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A3E91727-7F24-4C4A-954B-311B0CA6CE60">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A8117E16-7730-40F9-A50A-F4CD435F7934">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_90C4975C-E4EC-40C5-B36D-013B0839C2E5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CEBAA66A-65E1-45EF-88CC-612C5EA22160">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E37B20A7-DB3B-4691-96AB-1A3DCE5ADF3C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_25C5174C-3F0D-4128-8A2F-04B009BF3DFF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5B99CA8F-1712-4410-AF88-C86F1657E85E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D10CFE6B-DFD4-4F7E-961E-7E31313A8FCD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4B3BFC63-980C-4DF2-80C9-589676B9173E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C9FEF26B-18A1-468F-9DF7-43F713988108">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8E97EDEE-EC91-423A-9755-ACCFD4FE9543">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2C8F0701-9929-46AB-892C-9E05440CF042">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_29DBC2EF-C7EB-488F-8D36-542079566FED">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_082126F0-3324-401A-B416-01B0C94DA9E8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F663274A-8E31-478A-B97B-8E9290129295">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C101E4D9-B928-4F9D-84F9-663B0A151EF9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9973A54B-BF8D-49FD-BC52-924ECA5A10FF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_129B968A-9CB3-4214-BCD9-E05CE0234501">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_A257FFF2-F4A0-4EF5-B832-583F62671CA1">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_9072FAB9-E82C-43B9-8F87-EAB214B572E3">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_E5DE70FF-D7D6-4D48-AA24-12EE096D2C22">
+          <dmn:text>"050"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_16A701AE-0E98-4CE4-97EA-9DCE99B7E57F">
+          <dmn:text>"Es liegt nicht gen��gend Debitorenlimit f��r den Ankauf vor"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_7DCE75E5-EA7C-4E0D-AF2F-4E3541F11B24">
+        <dmn:inputEntry id="_E7E632E3-985D-4962-9D9D-D7AF797399E5">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3648EDD8-2DB5-43A4-96E2-D46B3A34CA1C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_054D5BF0-B2DA-422F-9002-42684AF7F058">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F3F4475F-8A9C-49F2-9179-0775E1B50F3F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DF958BE5-8882-439A-994F-22C9DCB5CB6C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_84F85CC7-C78E-4AAD-B823-8D5B4D3F24F8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_010C7A4C-5C1B-4533-BC70-C2ADF5585BE2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_80A6DF64-BC06-4FFE-9FDE-6A2CF4E836C5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4CFAB58B-5651-42B2-B8EC-8BFA8FCE0AE9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8A57A345-C1D3-426D-9618-7FB9BCF15F7A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BE5A2E7D-4A3A-4B8C-AE22-C83257EB7DB5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C7B0258C-2805-4245-A70F-DC9F64B5646B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9EA939A9-EABA-4CE5-B1F1-72FEF6BD1C2C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E2FC7710-AD43-4929-9A94-BEEA24F06E95">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4B4A4EE3-F4C6-4CB2-833E-458C3FA36776">
+          <dmn:text>&gt;= 750000</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BB12A5AE-136E-4A82-9A67-DB29C5C66B37">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_15ADB6BB-D74D-4CA6-9E39-B0DAE6AE2893">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A2CA603A-8E0C-42F6-9901-85658C15551F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AA6A4754-28FD-4D07-902F-6121F87B831E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5DCF9C40-22F2-4C93-BE65-28CC12079542">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_623790DA-AC8D-4631-84B5-1D47344D3B69">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_BC8DAC13-436C-4E0E-9658-DB1A9897EE3D">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_99743FDE-617E-44DF-B942-A9AA2A9421BC">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_0B887F9E-EA04-4208-BB98-AC9058EF413A">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_36A7209F-1FF8-486F-BB80-17B11C56BF9B">
+          <dmn:text>"170"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_0964B1F1-BC6A-456B-A0E8-B0A3E7805272">
+          <dmn:text>"Der Ankauf der Rechnung wird verhindert, weil Auflagen gem���� KWG ��18 nicht erf��llt sind. Die Pr��fung wird mit der Aktivierung des globalen Parameter: ankaufpruefung_kwg18 durchgef��hrt"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_63D524C3-F778-4BEC-93D1-D776E1B16932">
+        <dmn:description>Teilankauf</dmn:description>
+        <dmn:inputEntry id="_112F509C-CF7C-4FBE-A71B-A64203216E31">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5A92C4CB-E4A1-4430-A53F-1CFCAD31741C">
+          <dmn:text>&lt; invoice.openAmount</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B765F633-28AB-4307-BF2D-75888D237F30">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D7030A45-C4DA-45E2-8971-316F5D3C780F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_23034F1D-D108-475B-8591-355576AB9793">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_911C0FF2-4C19-4162-A7D3-3F72F9D40CA6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DBED8D19-B4F0-4C24-8A75-B42497B311E5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_46C02DD6-E2E6-4CE0-BCCD-22F6807A512F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3DF14D3B-AB1F-4AD7-A934-65E5559B165B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0B5E1D34-F676-47E6-A2B5-3829F45267D1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F2E7810B-E444-4935-ABE5-4B2FDBA3B533">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BEA6B9B5-722A-4065-A258-F92425B43369">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B9327A09-13C8-4C15-AE7B-60F23B25539C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D32CB12C-5BE1-4035-8B8E-4CBC1E094AA6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_77F5D8C2-3016-47C3-A76A-5126CD7AB087">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1689EF95-1472-43A3-94E5-C608F06D28A1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7AD23494-D0A6-40F8-9ED6-2679D5269D7B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C9699DF7-4768-4489-8497-402B1ACAE6AF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3ED30A48-756C-492A-BDDC-63EB07C1443C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EE08DB61-F677-44E0-99D7-9ABFC04F5B54">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_52851ADF-D692-4886-928F-3629F4CCA02C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_8C918728-B452-4A45-A3E6-912259DAD239">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BF3CFACF-1749-470E-89C2-F6DEE721D6E1">
+          <dmn:text>buyerAccount.availableLimit</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_996C5DF6-1360-4553-B441-520BAFFCF45B">
+          <dmn:text>"T"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_10DB4C38-BA92-4D9C-A529-3DE5F49D7DF6">
+          <dmn:text>"998"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_D0099464-ACEA-43ED-91A5-58F9C0677FA9">
+          <dmn:text>"Teilankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_92F69E0A-5CF3-4C4F-A73D-18B32540F435">
+        <dmn:description>Ankauf
+Alle Regeln hinter dieser sind deactiviert, weil nicht erreichbar</dmn:description>
+        <dmn:inputEntry id="_F1906C67-9500-436B-913F-57C89955FCE6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1CB24817-6BD9-4108-90B0-F91BF1D415EC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4B24FEF6-7DA7-4BDD-AB24-847239725005">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_624FCF2E-88CC-4220-8B41-157B498852E9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FDA93108-8C4E-4818-A2AC-F7AC4F7ECD01">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B2417359-2540-4F88-BE9E-2676E0B33E73">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6A77BAF7-ACAD-4439-A3D6-FD9356F6B15E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0032BF4C-595C-4070-BDDA-9E03BAC4450B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B82022EE-30F4-47FE-B967-40D3AADD5321">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_12502374-2A3F-4236-A671-38983E025C16">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7396FA47-6FCC-43A5-B7DB-6A22C773404F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C79D8049-3746-4D89-A62A-038654C5926E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_77A3A332-2F51-4C97-806E-083E8C1B6811">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_86D8C167-A431-4E13-A4DA-3ECC4AD38026">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_63F74E36-01CF-40C2-9079-AF835DD003FD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_36DB7BB9-3943-48BF-9EFF-92EFB2CA12B6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ED274566-7AB6-4E35-AF3C-B7AB5916660E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7F4871BC-C803-4580-AD29-25808312A0CC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4DE95983-B0E3-416E-AFFB-8AF1CB694FBD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3D0BC190-F6B8-44DC-981B-92BA96964C38">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D5AEDECD-8AF6-415E-A6B6-8FAF5AECD871">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_4AC0E819-9B94-4B67-B1A9-76EDAB9199A9">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_1C797A4E-ABF2-4CA8-A2C7-3342DCE11C21">
+          <dmn:text>invoice.openAmount</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_C1484674-1E58-4F32-8034-5C121EDFADFB">
+          <dmn:text>"BO"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_0AB63637-EDAD-4DFD-B2E0-8F88882AECB8">
+          <dmn:text>"997"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_1C55E7BE-08B7-4A6E-B074-24AF141209BE">
+          <dmn:text>"Ankauf"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_FAD83487-D09A-4CAF-8D56-447E447FE7B3">
+        <dmn:description>Anhand welcher Definition</dmn:description>
+        <dmn:inputEntry id="_39487847-5342-452F-9C94-6C2F8F9C3EAF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C274A400-8DE4-4565-A9D7-60490F5EE652">
+          <dmn:text>&lt; invoice.openAmount</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F13AD7B0-5E82-48CC-B30F-96A1844F1DE5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BD50E703-47AC-471D-BC1A-41B66CF8C6FC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AAE70AF2-B9E9-47B8-A6DB-95DEC6BF8197">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A5AD05D2-19B2-4731-95B1-8A531F4D581C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A84B1E7B-5C22-4935-B986-D13C3D630181">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3019DEEC-7D31-4473-944E-C6E9CC39F925">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2EFB960E-A58B-4925-842F-1DAF9C997E93">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6D74F7C5-A7D6-406D-8357-F936F7D19643">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_05A3909B-D114-456C-9E7B-6D7346F3539A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FB053899-18BB-42DF-9BC7-B969A79E6E93">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0A2F2A55-FB17-41C7-8AA2-48623136C283">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_09DD3EB1-113F-4C54-AE20-3FA6075D3AD4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_27FE0224-6DCA-4D47-ACBC-F98647E2A85A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_49911A0D-D067-49AF-BA28-627C8A5C695B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1AE86105-B7DE-4040-880F-684A53A21986">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_96A5D9BF-4A3C-4992-A535-CA20AB000ACC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C69250DB-38BB-4679-A178-6D3071412AAC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E94C2D54-E106-4F28-B51F-77B6918F3DC1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_41C984EF-E32E-4486-9083-0DA4553F4D00">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_C428990E-9E7D-4F12-9D9B-F8262DC4B923">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_70130FB9-2753-4483-97C5-F39C4B66A0BA">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_33C17BC2-9C51-4342-B3CD-CB4F2B2F1004">
+          <dmn:text>invoice.state</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_3C4DDC52-0BC9-47EE-B240-2B7C878A3072">
+          <dmn:text>"060"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_CA342413-A013-4079-B395-ED3449B07FAF">
+          <dmn:text>"Es finden keine Teilank��ufe statt"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_14D5356A-7896-499A-974B-66B30840B1FF" name="sellerBase">
+    <dmn:extensionElements/>
+    <dmn:variable id="_F8E1E865-4997-47E0-A3DA-F9A0EE517E21" name="sellerBase" typeRef="SellerBase"/>
+  </dmn:inputData>
+  <dmn:inputData id="_237D9621-89F8-4569-879E-407B8EA52D35" name="buyerAccount">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4447DC94-24CF-42F9-A25F-B1F9240790B5" name="buyerAccount" typeRef="BuyerAccount"/>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_8BBE65C0-15BE-4CEA-BE5B-6724C747463A">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3AACB3E8-EFC9-4011-B699-E34CB7CFF5C0">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_04F9401E-EE0B-4649-92E9-28A50897572C" dmnElementRef="_04F9401E-EE0B-4649-92E9-28A50897572C" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="157" y="194" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_9BADA991-3209-4C04-AE0C-B96B97A66C74" dmnElementRef="_9BADA991-3209-4C04-AE0C-B96B97A66C74" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="483" y="416" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_6B84ACA2-5542-43DA-B8DC-A386C90DB9E2" dmnElementRef="_6B84ACA2-5542-43DA-B8DC-A386C90DB9E2" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="210.5981308411215" y="416" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_56A44723-D93B-4102-8895-2BC8EDBD1240" dmnElementRef="_56A44723-D93B-4102-8895-2BC8EDBD1240" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="375" y="194" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_14D5356A-7896-499A-974B-66B30840B1FF" dmnElementRef="_14D5356A-7896-499A-974B-66B30840B1FF" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="102" y="416" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_237D9621-89F8-4569-879E-407B8EA52D35" dmnElementRef="_237D9621-89F8-4569-879E-407B8EA52D35" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="347.29906542056074" y="416" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_82C5019D-E708-4023-A6A0-7A7DEF526DFA" dmnElementRef="_82C5019D-E708-4023-A6A0-7A7DEF526DFA">
+        <di:waypoint x="152" y="441"/>
+        <di:waypoint x="207" y="219"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8E12EDE0-53E8-49BE-94B4-E2F876D40AC6" dmnElementRef="_8E12EDE0-53E8-49BE-94B4-E2F876D40AC6">
+        <di:waypoint x="260.5981308411215" y="441"/>
+        <di:waypoint x="207" y="219"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6587385C-6CF2-40D8-95AB-AF5B22F026F2" dmnElementRef="_6587385C-6CF2-40D8-95AB-AF5B22F026F2">
+        <di:waypoint x="397.29906542056074" y="441"/>
+        <di:waypoint x="207" y="219"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_83567FD9-B7AF-4820-A331-CD9462040930" dmnElementRef="_83567FD9-B7AF-4820-A331-CD9462040930">
+        <di:waypoint x="533" y="441"/>
+        <di:waypoint x="207" y="219"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6FB9F286-369F-4AEC-9C83-8F4EE10F49BF" dmnElementRef="_6FB9F286-369F-4AEC-9C83-8F4EE10F49BF">
+        <di:waypoint x="152" y="441"/>
+        <di:waypoint x="425" y="219"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FD0CE0CC-C0DA-452D-8B66-811D26FB017C" dmnElementRef="_FD0CE0CC-C0DA-452D-8B66-811D26FB017C">
+        <di:waypoint x="260.5981308411215" y="441"/>
+        <di:waypoint x="425" y="219"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_BE9C2866-BA08-40E1-97AA-DB0160DD3EE9" dmnElementRef="_BE9C2866-BA08-40E1-97AA-DB0160DD3EE9">
+        <di:waypoint x="397.29906542056074" y="441"/>
+        <di:waypoint x="425" y="219"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1F67992D-0EC6-4D80-B5BE-4DFD0944E724" dmnElementRef="_1F67992D-0EC6-4D80-B5BE-4DFD0944E724">
+        <di:waypoint x="533" y="441"/>
+        <di:waypoint x="425" y="219"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
